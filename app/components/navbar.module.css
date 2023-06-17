@@ -1,0 +1,14 @@
+.selected {
+  color:black;
+  background-color: aliceblue;
+}
+
+.default {
+  color:white;
+  background-color: rgb(0, 0, 0);
+}
+
+.nav {
+  display: flex;
+  border-bottom: 1px solid black;
+} 
