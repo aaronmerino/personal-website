@@ -1,11 +1,11 @@
 .selected {
-  color:white;
-  background-color: rgb(0, 0, 0);
+  color: rgb(var(--selected-first-rgb));
+  background-color: rgb(var(--selected-second-rgb));
 }
 
 .default {
-  color:black;
-  background-color: rgb(255, 255, 255);
+  color: rgb(var(--selected-second-rgb));
+  background-color: rgb(var(--selected-first-rgb));
 }
 
 .mainNav {
