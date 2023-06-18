@@ -1,7 +1,7 @@
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Home',
+  title: 'HOME',
 }
 
 // `app/page.js` is the UI for the `/` URL

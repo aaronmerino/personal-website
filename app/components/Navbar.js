@@ -14,20 +14,20 @@ export default function Navbar() {
   const [currentPage, setCurrentPage] = useState('HOME');
 
   return (
-    <nav className={styles.nav}>
-      <ol>
+    <nav>
+      <ul className={styles.mainNav}>
         {MENU_LIST.map(item => (
           <li key={item.text} >
             
               <Link onClick={() => setCurrentPage(item.text)} 
                     href={item.href}
-                    className={item.text === currentPage ? styles.selected : styles.default}>
+                    className={ (item.text === currentPage ? styles.selected : styles.default) + ' ' + styles.roundBorder}>
                 {item.text}
               </Link>
             
           </li>
         ))}
-      </ol>
+      </ul>
     </nav>
 
   );
