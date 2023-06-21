@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import styles from './post.module.css'
 
 
 export function Post({ title, date, images, content }) {

@@ -15,5 +15,9 @@ export default function Page() {
               <b>instagram</b>: { }
               <Link href={'https://www.instagram.com/rfalke01/'}>link</Link>
             </p>
+            <p>
+              <b>github</b>: { }
+              <Link href={'https://www.github.com/aaronmerino'}>link</Link>
+            </p>
           </div>);
 }
