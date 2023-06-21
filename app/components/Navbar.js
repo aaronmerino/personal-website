@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import styles from './navbar.module.css'
 
@@ -11,22 +11,25 @@ const MENU_LIST = [
 ];
 
 export default function Navbar() {
-  const [currentPage, setCurrentPage] = useState('HOME');
-
+  const pathname = usePathname()
+  
   return (
     <nav>
       <ul className={styles.mainNav}>
-        {MENU_LIST.map(item => (
-          <li key={item.text} >
+        {MENU_LIST.map(item => {
+          const isActive = pathname === item.href;
+
+          return (
+            <li key={item.text} >
             
-              <Link onClick={() => setCurrentPage(item.text)} 
-                    href={item.href}
-                    className={ (item.text === currentPage ? styles.selected : styles.default) + ' ' + styles.roundBorder}>
-                {item.text}
-              </Link>
-            
-          </li>
-        ))}
+              
+                <Link href={item.href}
+                      className={ (isActive ? styles.selected : styles.default) + ' ' + styles.roundBorder}>
+                  {item.text}
+                </Link>
+              
+            </li>
+        )})}
       </ul>
     </nav>
 
