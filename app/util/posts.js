@@ -2,7 +2,7 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 
-const postsDirectory = path.join(process.cwd(), 'app', 'posts');
+const postsDirectory = path.join(process.cwd(), 'public', 'posts');
 
 export async function getSortedPostsData() {
   try {
@@ -14,9 +14,16 @@ export async function getSortedPostsData() {
       const fileContents = await fsPromises.readFile(fullPath, { encoding: 'utf8' });
       const matterResult = matter(fileContents);
 
+      const imagesPath = path.join(postsDirectory, id, 'images');
+      let images = await fsPromises.readdir(imagesPath);
+      images = await Promise.all(images.map(async (image) => {
+        return `${folder}/images/${image}`;
+      }));
+
       return {
         id,
         ...matterResult.data,
+        images: images,
         content: matterResult.content
       };
     }));
