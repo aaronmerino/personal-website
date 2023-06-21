@@ -1,0 +1,29 @@
+.description {
+  display: inherit;
+  align-items: inherit;
+  font-size: 0.85rem;
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+  max-width: 36rem;
+  padding: 0 0 0.2rem 0;
+  margin: 3rem auto 6rem;
+  justify-content: center;
+}
+
+
+.description p {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: var(--border-radius);
+}
+
+.description a {
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: orange;
+  padding: 0 0.2rem 0 0.2rem;
+}
