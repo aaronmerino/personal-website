@@ -10,7 +10,7 @@ export const metadata = {
 export default async function Page() {
   const posts = await getSortedPostsData();
   return (<>
-            <h2>{"UNDER CONSTRUCTION! PLEASE WAIT WHILE I GATHER MY BRAIN BITS!"}</h2>
+            <h2>UNDER CONSTRUCTION! PLEASE WAIT WHILE I GATHER MY BRAIN BITS!</h2>
             
             {posts.map((post) => {
               return <Post key={post.title} title={post.title} date={post.date} images={post.images} content={post.content}></Post>
