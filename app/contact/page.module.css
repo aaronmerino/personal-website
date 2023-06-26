@@ -1,6 +1,5 @@
 .description {
-  display: inherit;
-  align-items: inherit;
+  display: block;
   font-size: 0.85rem;
   width: 100%;
   z-index: 2;
@@ -8,8 +7,8 @@
   max-width: 36rem;
   padding: 0 0 0.2rem 0;
   margin: 3rem auto 6rem;
-  justify-content: center;
 }
+
 
 
 .description p {
