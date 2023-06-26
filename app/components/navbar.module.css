@@ -10,24 +10,27 @@
 
 .mainNav {
   display: flex;
-  list-style-type: none;
-  max-width: 36rem;
-  padding: 0 0 0.2rem 0;
-  margin: 3rem auto 1rem auto;
+  width: 41.5rem;
+  height: 8rem;
+  flex-direction: row;
   justify-content: center;
-  border-bottom: 2px solid rgb(212, 212, 212);
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 10px;
+  background: #F1F1F1;
 } 
 
 .mainNav li {
   margin: 0 0.5rem 0 0.5rem;
   font-weight: bold;
+  list-style-type: none;  
 }
 
 .mainNav a {
   display: inline-block;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 }
 
 .roundBorder {
-  border-radius: 2px;
+  border-radius: 15px;
 }
