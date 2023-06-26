@@ -75,16 +75,21 @@
   }
 }
 
-* {
+/* * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
+} */
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+  display: flex;
+  width: 90rem;
+  padding: 1.6875rem 16.0625rem 0rem 16rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2.875rem;
   font-family: var(--font-inter);
 }
 

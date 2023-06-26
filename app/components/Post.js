@@ -5,10 +5,8 @@ import styles from './post.module.css'
 
 export function Post({ title, date, images, content }) {
   return (
-    <>
-      <h1>{title}</h1>
-      <h2>{date}</h2>
-      <ul>
+    <div className={styles.post}>
+      {/* <ul>
         {images.map((image) => { 
            return (<li key={image}>
                       <Image  src={`/posts/${image}`} 
@@ -16,12 +14,28 @@ export function Post({ title, date, images, content }) {
                               width={144} 
                               alt="" />
                     </li>);})}
-      </ul>
-
-      <div>
-        {content}
-      </div>
-    </>
+      </ul> */}
+      <Image  className={styles.image}
+              src={`/posts/${images[0]}`} 
+              height={400} 
+              width={400} 
+              alt="" />
+      <div className={styles.button}>{'\<'}</div>
+      <div className={styles.button}>{'\>'}</div>
+      <Description title={title} date={date} content={content}/>      
+    </div>
   );
 
+}
+
+function Description( {title, date, content }) {
+  return (
+    <div className={styles.description}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.date}>{date}</div>
+      </div>
+      <div className={styles.content}>{content}</div>
+    </div>
+  );
 }
