@@ -14,7 +14,7 @@ export default function Navbar() {
   const pathname = usePathname()
   
   return (
-    <nav>
+    <nav className={styles.main}>
       <ul className={styles.mainNav}>
         {MENU_LIST.map(item => {
           const isActive = pathname === item.href;

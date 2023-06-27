@@ -6,7 +6,7 @@ export const metadata = {
 
 // `app/page.js` is the UI for the `/` URL
 export default function Page() {
-  return (<div className={styles.description}>
+  return (<div className={styles.main}>
             <p>
               {"Hello, you can call me Aaron."}
             </p>

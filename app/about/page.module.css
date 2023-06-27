@@ -1,7 +1,7 @@
-.description {
-  display: block;
+.main {
   font-size: 0.85rem;
   width: 100%;
+  height: 88.4375rem;
   z-index: 2;
   font-family: var(--font-mono);
   max-width: 36rem;
@@ -10,7 +10,7 @@
 }
 
 
-.description p {
+.main p {
   position: relative;
   margin: 0;
   padding: 1rem;
