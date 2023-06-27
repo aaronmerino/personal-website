@@ -4,7 +4,8 @@
   --font-inter: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   --selected-first-rgb: 255, 255, 255;
-  --selected-second-rgb: 0, 0, 0;
+  --selected-second-rgb: 45, 45, 50;
+  --nav-bar-background: #F1F1F1;
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -40,10 +41,11 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --selected-first-rgb: 0, 0, 0;
-    --selected-second-rgb: 255, 255, 255;
+    --selected-first-rgb: 255, 255, 255;
+    --selected-second-rgb: 0, 0, 0;
+    --nav-bar-background: #525252;
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
@@ -73,7 +75,7 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
   }
-}
+} */
 
 /* * {
   box-sizing: border-box;
@@ -96,8 +98,8 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
