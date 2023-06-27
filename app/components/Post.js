@@ -1,27 +1,37 @@
 'use client'
 import Image from 'next/image';
 import styles from './post.module.css'
+import { useState } from 'react';
 
 
 export function Post({ title, date, images, content }) {
+  const [index, setIndex] = useState(0);
+
+  let hasPrev = index > 0;
+  let hasNext = index < images.length - 1;
+
+  function handlePrevClick() {
+    if (hasPrev) {
+      setIndex(index - 1);
+    }
+  }
+
+  function handleNextClick() {
+    if (hasNext) {
+      setIndex(index + 1);
+    }
+  }
+
+  
   return (
     <div className={styles.post}>
-      {/* <ul>
-        {images.map((image) => { 
-           return (<li key={image}>
-                      <Image  src={`/posts/${image}`} 
-                              height={144} 
-                              width={144} 
-                              alt="" />
-                    </li>);})}
-      </ul> */}
       <div className={styles.imageGallery}>
         <div className={styles.buttonImageController}>
-          <div className={styles.button}>{''}</div>
-          <div className={styles.button}>{''}</div>
+          <div className={styles.button + ' ' + (hasNext ? styles.enabled : styles.disabled)} onClick={handleNextClick} disabled={!hasNext}>{''}</div>
+          <div className={styles.button + ' ' + (hasPrev ? styles.enabled : styles.disabled)} onClick={handlePrevClick} disabled={!hasPrev}>{''}</div>
         </div>
         <Image  className={styles.image}
-                src={`/posts/${images[0]}`} 
+                src={`/posts/${images[index]}`} 
                 height={440} 
                 width={440} 
                 alt="" />
