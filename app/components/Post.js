@@ -15,13 +15,18 @@ export function Post({ title, date, images, content }) {
                               alt="" />
                     </li>);})}
       </ul> */}
-      <Image  className={styles.image}
-              src={`/posts/${images[0]}`} 
-              height={400} 
-              width={400} 
-              alt="" />
-      <div className={styles.button}>{'\<'}</div>
-      <div className={styles.button}>{'\>'}</div>
+      <div className={styles.imageGallery}>
+        <div className={styles.buttonImageController}>
+          <div className={styles.button}>{''}</div>
+          <div className={styles.button}>{''}</div>
+        </div>
+        <Image  className={styles.image}
+                src={`/posts/${images[0]}`} 
+                height={440} 
+                width={440} 
+                alt="" />
+      </div>
+
       <Description title={title} date={date} content={content}/>      
     </div>
   );
