@@ -11,7 +11,7 @@ export default function Page() {
               {"Hello, you can call me Aaron."}
             </p>
             <p>
-              {"I love studying anything Web Development, Math, how to draw, and most of all I love to learn!"}
+              {"I love studying anything web development, math, drawing, and most of all I love to learn!"}
             </p>
             <p>
               {"In this website, I showcase my projects which include my coding projects, drawings, and any cool math stuff I've learned!"}
