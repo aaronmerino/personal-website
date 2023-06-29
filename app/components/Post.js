@@ -1,6 +1,8 @@
 'use client'
 import Image from 'next/image';
 import styles from './post.module.css'
+import UpArrowIcon from '../icons/UpArrow'
+import DownArrowIcon from '../icons/DownArrow'
 import { useState } from 'react';
 
 
@@ -27,8 +29,14 @@ export function Post({ title, date, images, content }) {
     <div className={styles.post}>
       <div className={styles.imageGallery}>
         <div className={styles.buttonImageController}>
-          <div className={styles.button + ' ' + (hasNext ? styles.enabled : styles.disabled)} onClick={handleNextClick} disabled={!hasNext}>{''}</div>
-          <div className={styles.button + ' ' + (hasPrev ? styles.enabled : styles.disabled)} onClick={handlePrevClick} disabled={!hasPrev}>{''}</div>
+          <div className={styles.button + ' ' + (hasNext ? styles.enabled : styles.disabled)} 
+              onClick={handleNextClick} disabled={!hasNext}>
+                <UpArrowIcon disabled={!hasNext}/>
+          </div>
+          <div className={styles.button + ' ' + (hasPrev ? styles.enabled : styles.disabled)} 
+              onClick={handlePrevClick} disabled={!hasPrev}>
+                <DownArrowIcon disabled={!hasPrev}/>
+          </div>
         </div>
         <Image  className={styles.image}
                 src={`/posts/${images[index]}`} 
