@@ -29,11 +29,16 @@ export function Post({ title, date, images, content }) {
     <div className={styles.post}>
       <div className={styles.imageGallery}>
         <div className={styles.buttonImageController}>
-          <div className={styles.button + ' ' + (hasNext ? styles.enabled : styles.disabled)} 
+          <div className={`${styles.button} 
+                          ${(hasNext ? styles.enabled : styles.disabled)} 
+                          ${styles.roundedUp} 
+                          ${styles.borderUp}`} 
               onClick={handleNextClick} disabled={!hasNext}>
                 <UpArrowIcon disabled={!hasNext}/>
           </div>
-          <div className={styles.button + ' ' + (hasPrev ? styles.enabled : styles.disabled)} 
+          <div className={`${styles.button} 
+                          ${(hasPrev ? styles.enabled : styles.disabled)} 
+                          ${styles.roundedDown} `} 
               onClick={handlePrevClick} disabled={!hasPrev}>
                 <DownArrowIcon disabled={!hasPrev}/>
           </div>
