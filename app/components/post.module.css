@@ -4,6 +4,7 @@
   min-width: 770px;
   max-width: 55rem;
   min-height: 27.5rem;
+  max-height: 27.5rem;
   padding: 1.5rem 0.2rem 1.5rem 0.2rem;
   justify-content: center;
   align-items: flex-end;
@@ -124,6 +125,8 @@
 
 .description .content {
   display: flex;
+  overflow-y: scroll;
+  overflow-x: hidden;
   flex-direction: column;
   flex: 1 0 0;
   align-self: stretch;
@@ -135,4 +138,19 @@
   font-weight: 600;
   line-height: 150.023%;
   letter-spacing: 0.03rem;
+}
+
+.styledScrollbars {
+  /* Foreground, Background */
+  scrollbar-color: #999 #333;
+}
+.styledScrollbars::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.styledScrollbars::-webkit-scrollbar-thumb { /* Foreground */
+  background: #999;
+}
+.styledScrollbars::-webkit-scrollbar-track { /* Background */
+  background: #333;
 }

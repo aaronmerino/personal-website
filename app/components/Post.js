@@ -63,7 +63,10 @@ function Description( {title, date, content }) {
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.date}>{date}</div>
       </div>
-      <div className={styles.content}>{content}</div>
+      <div className={`${styles.content} 
+                    ${styles.styledScrollbars}`}>
+                    {content}
+      </div>
     </div>
   );
 }
