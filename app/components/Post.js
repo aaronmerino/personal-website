@@ -44,6 +44,7 @@ export function Post({ title, date, images, content }) {
           </button>
         </div>
         <Image  className={styles.image}
+                priority={true}
                 src={`/posts/${images[index]}`} 
                 height={440} 
                 width={440} 
