@@ -143,6 +143,7 @@
 .styledScrollbars {
   /* Foreground, Background */
   scrollbar-color: #999 #333;
+  scrollbar-width: thin;
 }
 .styledScrollbars::-webkit-scrollbar {
   width: 5px;
