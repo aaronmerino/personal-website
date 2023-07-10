@@ -34,6 +34,7 @@
     flex: 1 0 0;
     align-self: stretch;
     border-radius: 8px;
+    object-fit: cover;
   }
 }
 
@@ -227,6 +228,7 @@
     height: 100%;
     width: 100%;
     border-radius: 8px;
+    object-fit: cover;
   }
 
   .button.enabled:hover {
