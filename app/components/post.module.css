@@ -140,16 +140,16 @@
 }
 
 .description .figureButton {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: 700;
-  background-color:#e9be00;
+  background-color:#009fe9;
   border-radius: 5px;
-  padding: 2px;
-  margin: 2px;
+  padding: 0 2px;
+  margin: 0 2px;
 }
 
 .description .figureButton:hover {
-  background-color: #f7cf4b;
+  background-color: #8bc7e2;
 }
 
 .styledScrollbars {

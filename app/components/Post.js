@@ -34,7 +34,7 @@ function parseContent(content, handleSetImage) {
           if (text !== '') res.push(<>{text}</>);
           currState = 'FINDING_NAME';
         } else {
-          if (content.substr(i, 2) === '\r\n' || content.substr(i, 1) === '\n') {
+          if (content.substr(i, 1) === '\n') {
             res.push(<>{text}</>);
             res.push(<br/>);
             text = '';
@@ -58,15 +58,12 @@ function parseContent(content, handleSetImage) {
         if (char !== '>') {
           fname += char;
         } else {
-          currState = 'FOUND_END'; 
+          res.push(<FigureButton key={i} fname={fname} handleSetImage={handleSetImage} />);
+          currState = 'FINDING_START';
+          componentName = '';
+          fname = '';
+          text='';
         }
-        break;
-      case 'FOUND_END':
-        res.push(<FigureButton key={i} fname={fname} handleSetImage={handleSetImage} />);
-        currState = 'FINDING_START';
-        componentName = '';
-        fname = '';
-        text='';
         break;
     }
   }
@@ -172,7 +169,7 @@ function FigureButton({ fname, handleSetImage }) {
   const match = fname.match(regExp);
   return (
     <button className={styles.figureButton}onClick={() => handleSetImage(fname)}>
-      {match[1]}
+      {`figure: ${match[1]}`}
     </button>
   );
 }
