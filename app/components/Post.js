@@ -36,7 +36,7 @@ function parseContent(content, handleSetImage) {
         } else {
           if (content.substr(i, 2) === '\r\n') {
             res.push(<>{text}</>);
-            res.push(<>-</>);
+            res.push(<br/>);
             text = '';
           } else {
             text += char;
@@ -168,9 +168,11 @@ function Description({ title, date, content, handleSetImage }) {
 }
 
 function FigureButton({ fname, handleSetImage }) {
+  const regExp = /([ \w-]+)\./;
+  const match = fname.match(regExp);
   return (
     <button className={styles.figureButton}onClick={() => handleSetImage(fname)}>
-      {fname}
+      {match[1]}
     </button>
   );
 }
