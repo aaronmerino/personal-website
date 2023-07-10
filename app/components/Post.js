@@ -34,7 +34,7 @@ function parseContent(content, handleSetImage) {
           if (text !== '') res.push(<>{text}</>);
           currState = 'FINDING_NAME';
         } else {
-          if (content.substr(i, 2) === '\r\n') {
+          if (content.substr(i, 2) === '\r\n' || content.substr(i, 2) === '\n\n') {
             res.push(<>{text}</>);
             res.push(<br/>);
             text = '';
