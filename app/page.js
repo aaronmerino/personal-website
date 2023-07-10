@@ -11,7 +11,7 @@ export default async function Page() {
   const posts = await getSortedPostsData();
   return (<div className={styles.main}>
             {posts.map((post) => {
-              return <Post key={post.title} title={post.title} date={post.date} images={post.images} content={post.content}></Post>
+              return <Post key={post.id} title={post.title} date={post.date} images={post.images} content={post.content}></Post>
             })}
           </div>);
 }

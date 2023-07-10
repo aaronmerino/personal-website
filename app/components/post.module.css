@@ -139,6 +139,18 @@
   letter-spacing: 0.03rem;
 }
 
+.description .figureButton {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  background-color:#e9be00;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.description .figureButton:hover {
+  background-color: #f7cf4b;
+}
+
 .styledScrollbars {
   /* Foreground, Background */
   scrollbar-color: #999 #333;
