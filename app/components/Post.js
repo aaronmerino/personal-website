@@ -31,11 +31,12 @@ function parseContent(content, handleSetImage) {
     switch (currState) {
       case 'FINDING_START':
         if (char === '<') {
-          if (text !== '') res.push(<span key={i}>{text}</span>);
+          if (text !== '') res.push(<>{text}</>);
           currState = 'FINDING_NAME';
         } else {
           if (content.substr(i, 2) === '\r\n') {
-            res.push(<span key={i}>-</span>);
+            res.push(<>{text}</>);
+            res.push(<>-</>);
             text = '';
           } else {
             text += char;
