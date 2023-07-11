@@ -8,9 +8,9 @@ import { useState } from 'react';
 /**
  * This function will parse a string and convert it into a list of React Components that can be rendered.
  * The content contain normal text as well as strings of the form <FigureButton folder/images/image.png|jpg> that can be parsed into a UI component.
- * @param  {[string]} content [String to be parsed]
- * @param  {[function]} handleSetImage [description]
- * @return {[list]} [list of Components that React can render]
+ * @param  {string} content [String to be parsed]
+ * @param  {function} handleSetImage [description]
+ * @return {[React Components]} [list of Components that React can render]
  */
 
 function parseContentForImages(content, handleSetImage) {
