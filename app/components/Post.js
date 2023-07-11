@@ -141,6 +141,7 @@ function ImageGallery({ images, index, handleNextClick, handlePrevClick, hasNext
       <Image  className={styles.image}
               priority={true}
               src={`/posts/${images[index]}`} 
+              quality={100}
               height={440} 
               width={440} 
               alt="" />
