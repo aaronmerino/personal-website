@@ -46,7 +46,7 @@
 
     width: 20rem;
     max-width: 70rem;
-    padding: 0.5rem 0rem;
+    padding: 0.5rem 1rem;
     gap: 0.5rem;
     border-radius: 8px;
     background: #232326;
@@ -114,30 +114,30 @@
   margin: 0 0 0 0;
   width: 8.875rem;
   height: 5rem;
-  color: #eefffe;
+  color: #ffffff;
   font-size: 1.5rem;
   font-family: var(--font-inter);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .description .header .date{
-  color: #ececec;
-  font-size: 0.75rem;
+  color: #ffffff;
+  font-size: 0.90rem;
   font-family: var(--font-inter);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .description .content {
   overflow-y: scroll;
   overflow-x: hidden;
   color: #ececec;
-  padding: 0 10px 0 10px;
-  font-size: 0.8rem;
+  padding: 0 1rem;
+  font-size: 1rem;
   font-family: var(--font-inter);
   font-style: normal;
   font-weight: 600;
-  line-height: 150.023%;
-  letter-spacing: 0.03rem;
+  line-height: 150%;
+  letter-spacing: 0.05rem;
 }
 
 .description .figureButton {
