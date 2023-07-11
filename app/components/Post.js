@@ -5,16 +5,26 @@ import UpArrowIcon from '../icons/UpArrow'
 import DownArrowIcon from '../icons/DownArrow'
 import { useState } from 'react';
 
-function parseContent(content, handleSetImage) {
-  // STATES: 
-  //   FINDING_START (looking for '<')
-  //   FINDING_NAME (looking for '<name ...')
-  //   FINDING_IMAGE_NAME (looking for '<... fname=...')
-  //   FOUND_END (found '>')
+/**
+ * This function will parse a string and convert it into a list of React Components that can be rendered.
+ * The content contain normal text as well as strings of the form <FigureButton folder/images/image.png|jpg> that can be parsed into a UI component.
+ * @param  {[string]} content [String to be parsed]
+ * @param  {[function]} handleSetImage [description]
+ * @return {[list]} [list of Components that React can render]
+ */
 
-  // in the FINDING_START CASE, there are two types of characters we are looking for:
-  //    type1: '<'
-  //    type2: not '<'
+function parseContentForImages(content, handleSetImage) {
+  /**
+   STATES: 
+    FINDING_START (looking for '<')
+    FINDING_NAME (looking for '<name ...')
+    FINDING_IMAGE_NAME (looking for '<... NAME')
+
+    FINDING_START CASE: 
+      there are two types of characters we are looking for:
+        type 1: '<'
+        type 2: not '<'
+  */
   const COMPONENTS_NAME = {FigureButton: true}
 
   let res = [];
@@ -23,8 +33,6 @@ function parseContent(content, handleSetImage) {
 
   let componentName = '';
   let fname = '';
-
-  console.log(JSON.stringify(content));
 
   for (let i = 0; i < content.length; i++) {
     let char = content[i];
@@ -143,7 +151,7 @@ function ImageGallery({ images, index, handleNextClick, handlePrevClick, hasNext
 function Description({ title, date, content, handleSetImage }) {
   let newContent = null;
   try {
-    newContent = parseContent(content, handleSetImage);
+    newContent = parseContentForImages(content, handleSetImage);
   } catch (e) {
     console.error(e);
     newContent = '';

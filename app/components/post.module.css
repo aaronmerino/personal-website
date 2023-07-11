@@ -36,54 +36,7 @@
     border-radius: 8px;
     object-fit: cover;
   }
-}
 
-
-.button {
-  display: flex;
-  width: 3rem;
-  height: 2rem;
-  gap: 0.625rem;
-  /* border-radius: 10px; */
-  color: #ffffff;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  font-size: 1.25rem;
-  font-family: var(--font-inter);
-  font-weight: 800;
-}
-
-.borderUp {
-  border-color: #b9b9b9;;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-}
-
-.roundedUp {
-  border-top-left-radius: .25rem;
-  border-top-right-radius: .25rem;
-}
-
-.roundedDown {
-  border-bottom-left-radius: .25rem;
-  border-bottom-right-radius: .25rem;
-}
-
-.button.enabled:hover {
-  background: #f5f5f5;
-}
-
-.enabled {
-  background: #eaeaea;
-  box-shadow: 0px 0.8px 2px rgba(0,0,0,.032),0px 2.7px 6.7px rgba(0,0,0,.048),0px 12px 30px rgba(0,0,0,.08);
-}
-
-.disabled {
-  background: #D9D9D9;
-}
-
-@media (min-width: 881px) {
   .description {
     display: flex;
     flex: 1 1 auto;
@@ -99,76 +52,6 @@
     background: #232326;
   }
 }
-
-.description .header {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 0.0625rem;
-}
-
-.description .header .title{
-  display: flex;
-  margin: 0 0 0 0;
-  width: 8.875rem;
-  height: 5.625rem;
-  flex-direction: column;
-  color: #ececec;
-  font-size: 2rem;
-  font-family: var(--font-inter);
-  font-weight: 700;
-}
-
-.description .header .date{
-  color: #ececec;
-  font-size: 0.75rem;
-  font-family: var(--font-inter);
-  font-weight: 600;
-}
-
-.description .content {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  color: #ececec;
-  padding: 0 10px 0 10px;
-  font-size: 0.8rem;
-  font-family: var(--font-inter);
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150.023%;
-  letter-spacing: 0.03rem;
-}
-
-.description .figureButton {
-  color: rgb(255, 255, 255);
-  font-weight: 700;
-  background-color:#009fe9;
-  border-radius: 5px;
-  padding: 0 2px;
-  margin: 0 2px;
-}
-
-.description .figureButton:hover {
-  background-color: #8bc7e2;
-}
-
-.styledScrollbars {
-  /* Foreground, Background */
-  scrollbar-color: #999 #333;
-  scrollbar-width: thin;
-}
-.styledScrollbars::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-.styledScrollbars::-webkit-scrollbar-thumb { /* Foreground */
-  background: #999;
-}
-.styledScrollbars::-webkit-scrollbar-track { /* Background */
-  background: #333;
-}
-
 
 @media (max-width: 880px) {
   .post {
@@ -243,3 +126,119 @@
     background: #d9d9d9b0;
   }
 }
+
+
+.button {
+  display: flex;
+  width: 3rem;
+  height: 2rem;
+  gap: 0.625rem;
+  /* border-radius: 10px; */
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  font-family: var(--font-inter);
+  font-weight: 800;
+}
+
+.borderUp {
+  border-color: #b9b9b9;;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+.roundedUp {
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.roundedDown {
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+}
+
+.button.enabled:hover {
+  background: #f5f5f5;
+}
+
+.enabled {
+  background: #eaeaea;
+  box-shadow: 0px 0.8px 2px rgba(0,0,0,.032),0px 2.7px 6.7px rgba(0,0,0,.048),0px 12px 30px rgba(0,0,0,.08);
+}
+
+.disabled {
+  background: #D9D9D9;
+}
+
+.description .header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.description .header .title{
+  display: flex;
+  margin: 0 0 0 0;
+  width: 8.875rem;
+  height: 5.625rem;
+  flex-direction: column;
+  color: #ececec;
+  font-size: 2rem;
+  font-family: var(--font-inter);
+  font-weight: 700;
+}
+
+.description .header .date{
+  color: #ececec;
+  font-size: 0.75rem;
+  font-family: var(--font-inter);
+  font-weight: 600;
+}
+
+.description .content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: #ececec;
+  padding: 0 10px 0 10px;
+  font-size: 0.8rem;
+  font-family: var(--font-inter);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150.023%;
+  letter-spacing: 0.03rem;
+}
+
+.description .figureButton {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  background-color:#009fe9;
+  border-radius: 5px;
+  padding: 0 2px;
+  margin: 0 2px;
+}
+
+.description .figureButton:hover {
+  background-color: #8bc7e2;
+}
+
+.styledScrollbars {
+  /* Foreground, Background */
+  scrollbar-color: #999 #333;
+  scrollbar-width: thin;
+}
+.styledScrollbars::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.styledScrollbars::-webkit-scrollbar-thumb { /* Foreground */
+  background: #999;
+}
+.styledScrollbars::-webkit-scrollbar-track { /* Background */
+  background: #333;
+}
+
+
