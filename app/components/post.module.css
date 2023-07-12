@@ -131,13 +131,15 @@
   overflow-y: scroll;
   overflow-x: hidden;
   color: #626262;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   font-size: 1rem;
   font-family: var(--font-inter);
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
   letter-spacing: 0.05rem;
+  /* border: dotted #c7cbce;
+  border-width: 1px 0 0; */
 }
 
 .description .figureButton {
