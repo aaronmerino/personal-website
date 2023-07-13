@@ -2,7 +2,7 @@
 /**
  * Parses a string of properties of the form prop_1="..." prop_2="..." ... prop_n="...">
  * 
- * @return {an object or properties} [list of objects representing each post in the directory]
+ * @return {an object or properties} [an object of properties]
  */
 export function parseProperties(content, startingIdx) {
   /*
