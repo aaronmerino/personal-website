@@ -25,7 +25,11 @@ function parseContentForImages(content, handleSetImage) {
         type 1: '<'
         type 2: not '<'
   */
-  const COMPONENTS_NAME = {FigureButton: true}
+  const COMPONENTS_NAME = {
+    FigureButton: true,
+    HighlightedText: true,
+    BoldText: true,
+  }
 
   let res = [];
   let text = '';
@@ -78,6 +82,19 @@ function parseContentForImages(content, handleSetImage) {
 
   return res;
 }
+
+/**
+ * This function will parse a string and convert it into a React Components that can be rendered.
+ * @param  {string} text [text]
+ * @param  {string} backgroundColor [background text color]
+ * @param  {string} textColor [text color]
+ * @return {React Component} [HighlightText Component]
+ */
+function HighlightedText(text, backgroundColor, textColor) {
+    let res = null;
+    let currState = 'FINDING_PROPS';
+}
+
 
 export function Post({ title, date, images, content }) {
   const [index, setIndex] = useState(0);
