@@ -36,7 +36,7 @@ export async function getSortedPostsData() {
       };
     }));
 
-    console.log(allPostsData);
+    // console.log(allPostsData);
 
     return allPostsData.sort((a, b) => {
       if (a.date < b.date) {

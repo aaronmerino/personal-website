@@ -1,4 +1,3 @@
-
 /**
  * Parses a string of properties of the form prop_1="..." prop_2="..." ... prop_n="...">
  * 
@@ -14,7 +13,6 @@ export function parseProperties(content, startingIdx) {
       FINDING_VALUE
   */
   let currState = 'FINDING_NEXT_PROP';
-  let foundEnd = false;
   let propName = '';
   let propVal = '';
   let props = {};
@@ -28,8 +26,7 @@ export function parseProperties(content, startingIdx) {
           continue;
         } else if (char === '>') {
           // END OF LIST OF PROPERTIES
-          foundEnd = true;
-          return props;
+          return [i, props];
         } else {
           propName += char;
           currState = 'FINDING_PROP_NAME';
@@ -82,9 +79,6 @@ export function parseProperties(content, startingIdx) {
     }
   }
 
-  if (!foundEnd) {
-    throw new Error(`Bad Syntax`);
-  }
-  
-  return props;
+  // Did not find '>'
+  throw new Error(`Bad Syntax`);
 }

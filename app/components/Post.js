@@ -1,100 +1,48 @@
 'use client'
+import { parseProperties } from '../util/parseProperties';
 import Image from 'next/image';
 import styles from './post.module.css'
 import UpArrowIcon from '../icons/UpArrow'
 import DownArrowIcon from '../icons/DownArrow'
 import { useState } from 'react';
 
-/**
- * This function will parse a string and convert it into a list of React Components that can be rendered.
- * The content contain normal text as well as strings of the form <FigureButton folder/images/image.png|jpg> that can be parsed into a UI component.
- * @param  {string} content [String to be parsed]
- * @param  {function} handleSetImage [description]
- * @return {[React Components]} [list of Components that React can render]
- */
 
-function parseContentForImages(content, handleSetImage) {
-  /**
-   STATES: 
-    FINDING_START (looking for '<')
-    FINDING_NAME (looking for '<name ...')
-    FINDING_IMAGE_NAME (looking for '<... NAME')
 
-    FINDING_START CASE: 
-      there are two types of characters we are looking for:
-        type 1: '<'
-        type 2: not '<'
-  */
-  const COMPONENTS_NAME = {
-    FigureButton: true,
-    HighlightedText: true,
-    BoldText: true,
+
+function HighlightedText({ text, backgroundColor }) {
+  switch (backgroundColor) {
+    case 'red':
+      return (
+        <span className={styles.highlightRed}>{text}</span>
+      );
+
+    case 'yellow':
+      return (
+        <span className={styles.highlightYellow}>{text}</span>
+      );
+
+    case 'green':
+      return (
+        <span className={styles.highlightGreen}>{text}</span>
+      );
+
+    case 'cyan':
+      return (
+        <span className={styles.highlightCyan}>{text}</span>
+      );
   }
 
-  let res = [];
-  let text = '';
-  let currState = 'FINDING_START';
-
-  let componentName = '';
-  let fname = '';
-
-  for (let i = 0; i < content.length; i++) {
-    let char = content[i];
-    switch (currState) {
-      case 'FINDING_START':
-        if (char === '<') {
-          if (text !== '') res.push(<>{text}</>);
-          currState = 'FINDING_NAME';
-        } else {
-          if (content.substr(i, 1) === '\n') {
-            res.push(<>{text}</>);
-            res.push(<br/>);
-            text = '';
-          } else {
-            text += char;
-          }
-        }
-        break;
-      case 'FINDING_NAME':
-        if (char !== ' ') {
-          componentName += char;
-        } else {
-          if (COMPONENTS_NAME[componentName] === undefined) {
-            throw new Error(`Name of Component "${componentName}" is not recognized!`);
-          } else {
-            currState = 'FINDING_IMAGE_NAME';  
-          }
-        }
-        break;
-      case 'FINDING_IMAGE_NAME':
-        if (char !== '>') {
-          fname += char;
-        } else {
-          res.push(<FigureButton key={i} fname={fname} handleSetImage={handleSetImage} />);
-          currState = 'FINDING_START';
-          componentName = '';
-          fname = '';
-          text='';
-        }
-        break;
-    }
-  }
-
-  return res;
 }
 
-/**
- * This function will parse a string and convert it into a React Components that can be rendered.
- * @param  {string} text [text]
- * @param  {string} backgroundColor [background text color]
- * @param  {string} textColor [text color]
- * @return {React Component} [HighlightText Component]
- */
-function HighlightedText(text, backgroundColor, textColor) {
-    let res = null;
-    let currState = 'FINDING_PROPS';
+function FigureButton({ fname, handleSetImage }) {
+  const regExp = /([ \w-]+)\./;
+  const match = fname.match(regExp);
+  return (
+    <button className={styles.figureButton}onClick={() => handleSetImage(fname)}>
+      {`figure: ${match[1]}`}
+    </button>
+  );
 }
-
 
 export function Post({ title, date, images, content }) {
   const [index, setIndex] = useState(0);
@@ -117,6 +65,89 @@ export function Post({ title, date, images, content }) {
   function handleSetImage(fname) {
     setIndex(images.findIndex((name) => name === fname));
   }
+
+  /**
+   * This function will parse a string and convert it into a list of React Components that can be rendered.
+   * The content contain normal text as well as strings of the form <FigureButton folder/images/image.png|jpg> that can be parsed into a UI component.
+   * @param  {string} content [String to be parsed]
+   * @return {[React Components]} [list of Components that React can render]
+   */
+
+  function parseContent(content) {
+    /**
+     STATES: 
+      FINDING_START (looking for '<')
+      FINDING_NAME (looking for '<name ...')
+      FINDING_IMAGE_NAME (looking for '<... NAME')
+
+      FINDING_START CASE: 
+        there are two types of characters we are looking for:
+          type 1: '<'
+          type 2: not '<'
+    */
+    const COMPONENTS = {
+      FigureButton: {handleSetImage: handleSetImage},
+      HighlightedText: {},
+    }
+
+    let res = [];
+    let text = '';
+    let currState = 'FINDING_START';
+    let componentName = '';
+
+    for (let i = 0; i < content.length; i++) {
+      let char = content[i];
+      switch (currState) {
+        case 'FINDING_START':
+          if (char === '<') {
+            if (text !== '') res.push(<>{text}</>);
+            currState = 'FINDING_NAME';
+          } else {
+            if (content.substr(i, 1) === '\n') {
+              res.push(<>{text}</>);
+              res.push(<br/>);
+              text = '';
+            } else {
+              text += char;
+            }
+          }
+          break;
+        case 'FINDING_NAME':
+          if (char !== ' ') {
+            componentName += char;
+          } else {
+            if (COMPONENTS[componentName] === undefined) {
+              throw new Error(`Name of Component "${componentName}" is not recognized!`);
+            } else {
+              currState = 'FINDING_PROPERTIES';  
+            }
+          }
+          break;
+        case 'FINDING_PROPERTIES':
+
+          const [newIdx, props] = parseProperties(content, i);  
+          const otherProps = COMPONENTS[componentName];
+          const allProps = { ...props, ...otherProps };
+
+          switch (componentName) {
+            case 'FigureButton':
+              res.push(<FigureButton key={i} { ...allProps} />);
+              break;
+            case 'HighlightedText':
+              res.push(<HighlightedText key={i} { ...allProps} />);
+              break;
+          }
+          
+          currState = 'FINDING_START';
+          componentName = '';
+          text='';
+          i = newIdx;
+          break;
+      }
+    }
+
+    return res;
+  }
   
   return (
     <div className={styles.post}>
@@ -129,7 +160,7 @@ export function Post({ title, date, images, content }) {
 
       <Description  title={title} 
                     date={date} 
-                    content={content}
+                    content={parseContent(content)}
                     handleSetImage={handleSetImage}
                     />      
     </div>
@@ -166,14 +197,14 @@ function ImageGallery({ images, index, handleNextClick, handlePrevClick, hasNext
   );
 }
 
-function Description({ title, date, content, handleSetImage }) {
-  let newContent = null;
-  try {
-    newContent = parseContentForImages(content, handleSetImage);
-  } catch (e) {
-    console.error(e);
-    newContent = '';
-  }
+function Description({ title, date, content }) {
+  // let newContent = null;
+  // try {
+  //   newContent = parseContent(content, handleSetImage);
+  // } catch (e) {
+  //   console.error(e);
+  //   newContent = '';
+  // }
   
 
   return (
@@ -184,18 +215,9 @@ function Description({ title, date, content, handleSetImage }) {
       </div>
       <div className={`${styles.content} 
                     ${styles.styledScrollbars}`}>
-                    {newContent}
+                    {content}
       </div>
     </div>
   );
 }
 
-function FigureButton({ fname, handleSetImage }) {
-  const regExp = /([ \w-]+)\./;
-  const match = fname.match(regExp);
-  return (
-    <button className={styles.figureButton}onClick={() => handleSetImage(fname)}>
-      {`figure: ${match[1]}`}
-    </button>
-  );
-}

@@ -171,6 +171,22 @@
   background: #333;
 }
 
+.highlightRed {
+  background: rgb(255, 171, 171);
+}
+
+.highlightYellow {
+  background: rgb(255, 238, 145);
+}
+
+.highlightGreen {
+  background: rgb(199, 255, 135);
+}
+
+.highlightCyan {
+  background: rgb(146, 255, 250);
+}
+
 @media (max-width: 880px) {
   .post {
     display: flex;
