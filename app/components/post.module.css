@@ -187,6 +187,10 @@
   background: rgb(146, 255, 250);
 }
 
+.highlightDefault {
+  background: rgb(215, 215, 215);
+}
+
 @media (max-width: 880px) {
   .post {
     display: flex;

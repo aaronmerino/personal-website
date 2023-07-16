@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 
 function HighlightedText({ text, backgroundColor }) {
-  switch (backgroundColor) {
+  switch (backgroundColor.toLowerCase()) {
     case 'red':
       return (
         <span className={styles.highlightRed}>{text}</span>
@@ -30,6 +30,10 @@ function HighlightedText({ text, backgroundColor }) {
       return (
         <span className={styles.highlightCyan}>{text}</span>
       );
+    default:
+      return (
+        <span className={styles.highlightDefault}>{text}</span>
+      ); 
   }
 
 }
