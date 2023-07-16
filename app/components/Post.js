@@ -44,6 +44,8 @@ function FigureButton({ fname, handleSetImage }) {
   );
 }
 
+
+
 export function Post({ title, date, images, content }) {
   const [index, setIndex] = useState(0);
 
@@ -67,6 +69,32 @@ export function Post({ title, date, images, content }) {
   }
 
   /**
+   * This is a factory function that will return a component based on a components name and an object with its properties
+   * @param  {string} componentName [name of the component to be made]
+   * @param  {int} key [key value for React purposes]
+   * @param  {object} props [an object of properties of a component]
+   * @return {react component} [a react component based on component name, or throws an error if it does not exist]
+   */
+
+  function postContentComponentsFactory(componentName, key, props) {
+    let res = null;
+
+    switch (componentName) {
+      case 'FigureButton':
+        const allProps = { ...props, handleSetImage: handleSetImage };
+        res = <FigureButton key={key} { ...allProps } />;
+        break;
+      case 'HighlightedText':
+        res = <HighlightedText key={key} { ...props } />;
+        break;
+      default:
+        throw new Error(`Name of Component "${componentName}" is not recognized!`);
+    }
+
+    return res;
+  }
+
+  /**
    * This function will parse a string and convert it into a list of React Components that can be rendered.
    * The content contain normal text as well as strings of the form <FigureButton folder/images/image.png|jpg> that can be parsed into a UI component.
    * @param  {string} content [String to be parsed]
@@ -78,18 +106,8 @@ export function Post({ title, date, images, content }) {
      STATES: 
       FINDING_START (looking for '<')
       FINDING_NAME (looking for '<name ...')
-      FINDING_IMAGE_NAME (looking for '<... NAME')
-
-      FINDING_START CASE: 
-        there are two types of characters we are looking for:
-          type 1: '<'
-          type 2: not '<'
+      FINDING_PROPERTIES (looking for '<... prop_1=val_1 prop_2=val_2 ... prop_n=val_n')
     */
-    const COMPONENTS = {
-      FigureButton: {handleSetImage: handleSetImage},
-      HighlightedText: {},
-    }
-
     let res = [];
     let text = '';
     let currState = 'FINDING_START';
@@ -116,28 +134,13 @@ export function Post({ title, date, images, content }) {
           if (char !== ' ') {
             componentName += char;
           } else {
-            if (COMPONENTS[componentName] === undefined) {
-              throw new Error(`Name of Component "${componentName}" is not recognized!`);
-            } else {
-              currState = 'FINDING_PROPERTIES';  
-            }
+            currState = 'FINDING_PROPERTIES';  
           }
           break;
         case 'FINDING_PROPERTIES':
-
           const [newIdx, props] = parseProperties(content, i);  
-          const otherProps = COMPONENTS[componentName];
-          const allProps = { ...props, ...otherProps };
+          res.push(postContentComponentsFactory(componentName, i, props));
 
-          switch (componentName) {
-            case 'FigureButton':
-              res.push(<FigureButton key={i} { ...allProps} />);
-              break;
-            case 'HighlightedText':
-              res.push(<HighlightedText key={i} { ...allProps} />);
-              break;
-          }
-          
           currState = 'FINDING_START';
           componentName = '';
           text='';
