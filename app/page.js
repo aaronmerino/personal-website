@@ -1,6 +1,5 @@
-import styles from './page.module.css'
 import { getSortedPostsData } from './util/posts';
-import { Post } from './components/Post';
+import { Home } from './components/Home';
 
 export const metadata = {
   title: 'HOME',
@@ -9,9 +8,5 @@ export const metadata = {
 // `app/page.js` is the UI for the `/` URL
 export default async function Page() {
   const posts = await getSortedPostsData();
-  return (<div className={styles.main}>
-            {posts.map((post) => {
-              return <Post key={post.id} title={post.title} date={post.date} images={post.images} content={post.content}></Post>
-            })}
-          </div>);
+  return <Home sortedPosts={posts}/>;
 }
