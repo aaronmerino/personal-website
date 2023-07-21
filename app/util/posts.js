@@ -24,9 +24,13 @@ export async function getSortedPostsData() {
 
       const imagesPath = path.join(postsDirectory, id, 'images');
       let images = await fsPromises.readdir(imagesPath);
-      images = await Promise.all(images.map(async (image) => {
+      images = images.map((image) => {
         return `${folder}/images/${image}`;
-      }));
+      });
+      
+      // images = await Promise.all(images.map(async (image) => {
+      //   return `${folder}/images/${image}`;
+      // }));
 
       return {
         id,

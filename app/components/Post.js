@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from './post.module.css'
 import UpArrowIcon from '../icons/UpArrow'
 import DownArrowIcon from '../icons/DownArrow'
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 
 
@@ -122,12 +122,12 @@ export function Post({ title, date, images, content }) {
       switch (currState) {
         case 'FINDING_START':
           if (char === '<') {
-            if (text !== '') res.push(<>{text}</>);
+            if (text !== '') res.push(<Fragment key={i} >{text}</Fragment>);
             currState = 'FINDING_NAME';
           } else {
-            if (content.substr(i, 1) === '\n') {
-              res.push(<>{text}</>);
-              res.push(<br/>);
+            if (content.slice(i, i+1) === '\n') {
+              res.push(<Fragment key={i} >{text}</Fragment>);
+              res.push(<br key={i + '_br'}/>);
               text = '';
             } else {
               text += char;
