@@ -42,7 +42,7 @@ function FigureButton({ fname, handleSetImage }) {
   const regExp = /([ \w-]+)\./;
   const match = fname.match(regExp);
   return (
-    <button className={styles.figureButton}onClick={() => handleSetImage(fname)}>
+    <button className={styles.figureButton} onClick={() => handleSetImage(fname)}>
       {`figure: ${match[1]}`}
     </button>
   );
@@ -107,7 +107,7 @@ export function Post({ title, date, images, content }) {
 
   function parseContent(content) {
     /**
-     STATES: 
+    STATES: 
       FINDING_START (looking for '<')
       FINDING_NAME (looking for '<name ...')
       FINDING_PROPERTIES (looking for '<... prop_1=val_1 prop_2=val_2 ... prop_n=val_n')
@@ -200,7 +200,7 @@ function ImageGallery({ images, index, handleNextClick, handlePrevClick, hasNext
               height={440} 
               width={440} 
               alt="" />
-   </div>
+    </div>
   );
 }
 
