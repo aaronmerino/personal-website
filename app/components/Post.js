@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './post.module.css'
 import UpArrowIcon from '../icons/UpArrow'
 import DownArrowIcon from '../icons/DownArrow'
+import { Suspense } from 'react'
 import { Fragment, useState } from 'react';
 
 
@@ -193,13 +194,15 @@ function ImageGallery({ images, index, handleNextClick, handlePrevClick, hasNext
               <DownArrowIcon disabled={!hasPrev}/>
         </button>
       </div>
-      <Image  className={styles.image}
-              priority={true}
-              src={`/posts/${images[index]}`} 
-              quality={100}
-              height={440} 
-              width={440} 
-              alt="" />
+      <Suspense fallback={<p>loading image...</p>}>
+        <Image  className={styles.image}
+                priority={true}
+                src={`/posts/${images[index]}`} 
+                quality={100}
+                height={440} 
+                width={440} 
+                alt="" />
+      </Suspense>
     </div>
   );
 }
